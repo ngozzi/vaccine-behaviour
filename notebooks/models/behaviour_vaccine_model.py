@@ -177,39 +177,6 @@ def get_vaccinated_next_step(nage, t, tV0, vt, maxV, rV, Nk, vaccination_by_age,
                             V_S[age] = y[(ncomp * age) + 0]
                         if V_S_NC[age] > y[(ncomp * age) + 2]:
                             V_S_NC[age] = y[(ncomp * age) + 2]
-
-        
-        #else:
-            # first vaccinate 60+
-            #den = 0
-            #for age in np.arange(12, 16, 1):
-            #    den += (y[(ncomp * age) + 0] + y[(ncomp * age) + 2])
-            #    
-            #for age in np.arange(12, 16, 1):
-            #    V_S[age] = totV * y[(ncomp * age) + 0] / den
-            #    V_S_NC[age] = totV * y[(ncomp * age) + 2] / den
-            #    
-            #    # check we are not exceeding the tot n. of susceptibles left
-            #    if V_S[age] > y[(ncomp * age) + 0]:
-            #        V_S[age] = y[(ncomp * age) + 0]
-            #    if V_S_NC[age] > y[(ncomp * age) + 2]:
-            #        V_S_NC[age] = y[(ncomp * age) + 2]
-
-            ## we give the vaccines left to the other age groups (in decreasing order)
-            #left_V = totV - np.sum(V_S) - np.sum(V_S_NC)
-            #den = 0
-            #for age in np.arange(0, 12, 1):
-            #    den += (y[(ncomp * age) + 0] + y[(ncomp * age) + 2])
-            #    
-            #for age in np.arange(0, 12, 1):
-            #    V_S[age] = left_V * y[(ncomp * age) + 0] / den
-            #    V_S_NC[age] = left_V * y[(ncomp * age) + 2] / den
-            #    
-                # check we are not exceeding the tot n. of susceptibles left
-            #    if V_S[age] > y[(ncomp * age) + 0]:
-            #        V_S[age] = y[(ncomp * age) + 0]
-            #    if V_S_NC[age] > y[(ncomp * age) + 2]:
-            #        V_S_NC[age] = y[(ncomp * age) + 2]
                     
     return V_S, V_S_NC
 
@@ -245,10 +212,7 @@ def integrate_BV(y0, initial_date, T, beta, eps, mu, IFR, Delta, r, A, B, rV, VE
         - for each age group compartments must be ordered like this: S, SV, S_NC, SV_NC, E, I, R, D, DO
         - the timestep by timestep trick is needed to properly update vt and dt
     """
-    
-    # get beta from R0 (R0 is always w.r.t to initial_date)
-    #beta = get_beta(R0, mu, update_contacts(country_dict, datetime(2020,9,1), scenario=scenario), country_dict["Nk"])
-    
+   
     # get number of age class and number of compartments
     nage  = len(country_dict["Nk"])
     
