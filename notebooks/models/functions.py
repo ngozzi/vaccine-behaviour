@@ -206,9 +206,4 @@ def update_contacts(country_dict, date, w_r=None, oth_r=None, sch_r=None, scenar
      
     else: 
         return home + work + other_locations + school
-            
-    
-
-    
-    
-    
+         
