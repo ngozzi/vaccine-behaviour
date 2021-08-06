@@ -40,6 +40,10 @@ Delta   = 17
 i0      = 0.5 / 100.0
 r0      = 10.0 / 100.0
 
+# vaccine efficacy
+VE         = 0.9
+VES        = 0.7
+VEM        = 1 - (1 - VE) / (1 - VES)
 
 # dates
 start_date = datetime(2021, 1, 1)
